@@ -46,6 +46,8 @@ player = Player("Ebi", room['outside'])
 #
 
 done = False
+
+
 while not done:
     # * Prints the current room name
     print(player.location)
@@ -53,13 +55,16 @@ while not done:
     for line in textwrap.wrap(player.location.print_description()):
         # textwrap = better formatting if you have really long descriptions
         print(line)
+    print('\n')
 # * Waits for user input and decides what to do.
 #    print('Hello')
     command = input(
-        'What do you want to do: \n \t []=visit a room [q]=quit:  \n > ')
+        'What do you want to do: \n \t [n]=visit a room [q]=quit:  \n > ')
 
 # If the user enters a cardinal direction, attempt to move to the room there.
-
+    if command in ['n', 's', 'e', 'w']:
+        player.location = player.move_to(command, player.location)
+        continue  # to go to the next loop
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.

@@ -7,5 +7,15 @@ class Player:
         self.name = name
         self.location = location
 
-    def __str__(self):
-        return f"Name: {self.name}:  {self.location}"
+    def move_to(self, direction, current_loc):
+        # try to move in the specified direction
+        attribute = direction + '_to'
+
+    # if we can move in the specified direction from our current location
+        if hasattr(current_loc, attribute):
+            # get the room in the specified direction
+            return getattr(current_loc, attribute)
+    # if we cant go that way
+        print('You cant go that way, try again\n')
+
+        return current_loc
