@@ -45,15 +45,16 @@ class Geocache(Waypoint):
 # YOUR CODE HERE
 
 
-# Without changing the following line, how can you make it print into something
-# more human-readable? Hint: Look up the `object.__str__` method
-waypoint = Waypoint("Catacombs", 41.70505, -121.51521)
-print(waypoint)
+if __name__ == '__main__':  # doesnt run when it's imported in another file
+    # Without changing the following line, how can you make it print into something
+    # more human-readable? Hint: Look up the `object.__str__` method
+    waypoint = Waypoint("Catacombs", 41.70505, -121.51521)
+    print(waypoint)
 
-# Make a new geocache "Newberry Views", diff 1.5, size 2, 44.052137, -121.41556
+    # Make a new geocache "Newberry Views", diff 1.5, size 2, 44.052137, -121.41556
 
-# YOUR CODE HERE
+    # YOUR CODE HERE
 
-# Print it--also make this print more nicely
-geocache = Geocache("Newberry Views", 44.052137, -121.41556, 2, 1.5)
-print(geocache)
+    # Print it--also make this print more nicely
+    geocache = Geocache("Newberry Views", 44.052137, -121.41556, 2, 1.5)
+    print(geocache)
