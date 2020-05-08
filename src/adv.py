@@ -47,6 +47,16 @@ player = Player("Ebi", room['outside'])
 
 done = False
 
+# helper function to skip input we dont understand
+
+
+def skip_input():
+    print('I dont undersntad that command, try again \n')
+
+
+def print_help():
+    print('\n[n] - North, [s] - South, [e] - East, [w] - West)\n')
+
 
 while not done:
     # * Prints the current room name
@@ -59,22 +69,29 @@ while not done:
 # * Waits for user input and decides what to do.
 #    print('Hello')
     command = input(
-        'What do you want to do: \n \t [n]=visit a room [q]=quit:  \n > ')
+        'What do you want to do: \n \t [?]=legend [q]=quit:  \n > ')
+
+# checking if the command is properly formatted
+    if len(command) > 2 or len(command) < 1:
+        skip_input()
+        continue
 
 # If the user enters a cardinal direction, attempt to move to the room there.
     if command in ['n', 's', 'e', 'w']:
         player.location = player.move_to(command, player.location)
+
+    if command in ['?', 'help']:
+        print_help()
         continue  # to go to the next loop
+
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
 
-    if command == "q":
+    # if command == "q":
+    if command in ['quit', 'q', 'exit']:
         print("Thanks for playing, see you next time!")
         done = True
-
-    # try:
-    #     selection = int(selection)
-
-    # except ValueError:
-    #     print('Please enter your choice as a number')
+    else:
+        skip_input()
+        continue
