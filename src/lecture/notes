@@ -1,0 +1,79 @@
+CLASS ==> noun                  ||| a player            || a rabbit
+||  ||
+||  \/
+||   ATTRIBUTES => adjectives   ||| speed, strength     || diet
+\/
+METHODS => verb                 ||| action rules        || rules
+
+
+******OBJECT-ORIENTED DESIGN*****
+
+"""A simple example class"""       ==> class
+                                        constructor
+                                        method ==> efines a specific behavior
+
+
+
+class Animal:
+    """a A simple example class"""
+     def_init(name,hunger,diet):
+        self.name = name
+        self.hunger=hunger
+        self.diet= diet
+
+    def eat(self,food):
+        if food >0 and hunger <25:
+            hunger += food
+
+class contain:
+    attributes [adjectives]
+    methods [verbs]
+
+
+
+***CLASS INHERITANCE *****
+
+INHERITANCE => helps avoid redudancies
+
+
+class Animal:
+    """a A simple example class"""
+
+    def_init(name,hunger,diet):
+        self.name = name
+        self.hunger=hunger
+        self.diet= diet
+
+    def eat(self,food):
+        if food >0 and hunger <25:
+            hunger += food
+
+
+
+class Dog(Animal):
+    """a An  example subclass"""
+
+    def_init__(breed,indoor):
+        self.breed = breed
+        self.isindoor=indor
+
+    def fetch(self,ballX,ballY):
+        move(ballX,ballY)
+
+METHOD OVERRIDING --  USING SUPER()
+
+class Dog(Animal):
+    """a An  example subclass"""
+
+    def_init__(breed,indoor):
+        super()._init__(name,hunger,diet)
+        self.breed = breed
+        self.isindoor=indor
+
+    def fetch(self,ballX,ballY):
+        move(ballX,ballY)
+
+        we have the ability to override methods from the parent class 
+        by writing it in the Dog class. if you call it, it will look into 
+        the child class first before moving into the parent class. 
+
