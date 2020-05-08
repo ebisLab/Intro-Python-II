@@ -95,3 +95,5 @@ while not done:
     else:
         skip_input()
         continue
+
+    # to do add items to room
