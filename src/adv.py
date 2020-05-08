@@ -49,3 +49,15 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+while True:
+    selection = input('Type the room you want to be in')
+
+    if selection == "exit":
+        print("Thanks for shopping with us!")
+        break
+
+    try:
+        selection = int(selection)
+
+    except ValueError:
+        print('Please enter your choice as a number')

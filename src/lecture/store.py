@@ -31,11 +31,18 @@ class Department:
     def __init__(self, name, products=[]):
         self.name = name
         # * = spread this, name, price
-        self.products = [Product(*p) for p in products]
+        self.products = products  # [Product(*p) for p in products]
         # ↳ Product(p[0],p[1])
 
     def __str__(self):
-        return f"No products available in the {self.name}"
+        return f"Welcome to the {self.name} department"
+
+    def add_product(self, product, price):
+        self.products.append(Product(product, price))
+
+    def print_products(self):
+        for p in self.products:
+            print(p)
 
 
 class Store:
@@ -43,22 +50,40 @@ class Store:
         self.name = name
         self.location = latLong(lat, lon)
         # self.department = department
-        self.department = [Department(d)
-                           for d in department]  # have them in a list
+        self.department = [Department(department_name, department_products)
+                           for department_name, department_products in department.items()]  # have them in a list
 
     # add a __str__ method so that can observe our Store instance
 
     def __str__(self):
         return f"Store {self.name}, {self.location}, {self.department}"
 
+    def print_products(self):
+        for d in self.department:
+            d.print_products()
 
-store = Store("LabmdaStore: ", 44.052137, -121.41556,
-              ["produce", "clothing", "Books", "Sporting Goods"])
+    def print_departments(self):
+        for d in self.department:
+            print(d)
+
+
+products_and_departments = {
+    "produce": [Product("Zucchini", 20)],
+    "clothing": [Product("Coat", 90), Product("Blouse", 25)],
+    "Books": [Product("Game of Thrones", 2), Product("Witcher", 10)],
+    "Sporting Goods": [Product("Canoe", 2000), Product("Gloves", 20), Product("Baseball", 20)]
+}
+
+store = Store("LabmdaStore: ", 44.052137, -121.41556, products_and_departments)
 
 # alternative 2 ↴
 # store = Store("LabmdaStore: ", 44.052137, -121.41556,
 #               [Department("produce"), Department("clothing"), Department("Books"), Department("Sporting Goods")])
+store.department[1].add_product("Zucchini", 2.00)
+store.department[3].add_product("coat", 25.00)
 
+store.print_products()
+store.print_departments()
 # print(store)
 
 # we want to add departments
